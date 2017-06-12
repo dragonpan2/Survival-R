@@ -1,6 +1,7 @@
 
 package survival;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,7 +13,7 @@ public class Survival {
 
     public static Scanner SCAN = new Scanner(System.in);
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
         
         
