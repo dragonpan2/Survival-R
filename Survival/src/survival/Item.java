@@ -76,9 +76,4 @@ public abstract class Item {
     public void setResources(ArrayList<Item> resources) {
         this.resources = resources;
     }
-    
-    
-    
-    
-    
 }

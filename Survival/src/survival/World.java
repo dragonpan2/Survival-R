@@ -61,14 +61,14 @@ public class World extends JPanel implements Runnable {
         long sleepTime;
         
         while (true) {
+            
             startTime = System.nanoTime();
 
             invalidate();
             repaint();
 
             endTime = System.nanoTime();
-
-
+            
             sleepTime = (long)(desiredSleepms*1000000) - (endTime-startTime);
             long totalDelay = 0;
             if (sleepTime < 0) {
@@ -88,9 +88,9 @@ public class World extends JPanel implements Runnable {
             int realUPS = (int)(1000000000D/totalDelay);
             deltaTString = (Integer.toString(realUPS));
             lblFrameRate.setText(deltaTString);
-
+            
         }
-
+        
     }
 
     public void debugSwitcher() {
