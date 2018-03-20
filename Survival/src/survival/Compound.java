@@ -5,6 +5,8 @@
  */
 package survival;
 
+import survival.Reboot.Infrastructure;
+import survival.Reboot.CraftingStation;
 import java.util.ArrayList;
 
 /**

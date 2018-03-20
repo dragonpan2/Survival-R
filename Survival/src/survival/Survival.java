@@ -1,6 +1,8 @@
 
 package survival;
 
+import survival.Reboot.Infrastructure;
+import survival.Reboot.CraftingStation;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,7 +14,7 @@ import java.util.Scanner;
 public class Survival {
 
     public static Scanner SCAN = new Scanner(System.in);
-    
+    public static  Item[] gameItem = Init.gameInit();
     public static void main(String[] args) throws IOException {
         
         
@@ -60,7 +62,7 @@ public class Survival {
        // Player player = new Player(0,"amba", 100, 100, 100, 100, 100, 100, 100, 100, inventory);
         Player player = new Player(100,100,100,100,100,100,0,0,0,"amba",100,100,inventory);
       
-        Item[] gameItem = Init.gameInit();
+       
         
         Compound playerCompound = new Compound(compInv,compCTInv,infrastructureInv,0,1,0,0,0,Compound.PlayerAccess.OWNED,"The Compound");
         

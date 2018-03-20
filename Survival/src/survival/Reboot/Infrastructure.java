@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package survival;
+package survival.Reboot;
 
 import java.util.ArrayList;
+import survival.Item;
+import survival.Survival;
 
 /**
  *
@@ -16,16 +18,37 @@ public class Infrastructure {
     private String type;
     private int grade;
     private String name;
+    private int counter;
+    private  int maxCounter;
+    private LootList lootList;
+    private ArrayList<Item> inventory;
 
-    public Infrastructure(String type, int grade, String name) {
+    public Infrastructure(String type, int grade, String name,LootList lootList) {
         this.type = type;
         this.grade = grade;
         this.name = name;
+        this.lootList = lootList;
+        this.inventory = new ArrayList<>();
     }
     
-    public void produce(ArrayList compInv) {
+    public void normalProduce() {
+        if (counter < maxCounter) {
+            counter++;
+        }
+        else {
+            counter = 0;
+            forceProduce();
+        }
+    }
+    
+    public void forceProduce() {
         
+        int[] lList =lootList.getLoot();
         
+        for (int i = 0; i < lList[1]; i++) {
+              inventory.add(Survival.gameItem[0]);
+        }
+      
         
     }
 
