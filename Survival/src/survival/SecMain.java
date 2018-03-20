@@ -8,7 +8,7 @@ import static survival.Survival.SCAN;
  *
  * @author panbe
  */
-public class SecMain {
+public abstract class SecMain {
 
     public static void playerStat(Player player) {
         System.out.println("-------------------------");
@@ -27,33 +27,33 @@ public class SecMain {
     
     public static boolean inventoryManagement(Player player) {
         int selectedItem;
-                SecMain.cls(); //clear screen
-                Survival.checkInventory(player.getInventory()); //check inventory
-                
-                selectedItem = Survival.getInt0(player.getInventory().size())-1;
-                if (selectedItem == -1) {return true;}
-                if (selectedItem != -1) {
-                
-                Survival.printItemB(player.getInventory().get(selectedItem));
-                
-                //action
-                //
-                System.out.println("-----------------------------------");
-                if (player.getInventory().get(selectedItem) instanceof Consumable) {
-                    System.out.println("-0 do nothing");
-                    System.out.println("-1 consume");
-                    switch (Survival.getInt0(1)) {
-                        case 0:
-                            break;
-                        case 1:
-                            
-                            Action.consume(player, (Consumable) player.getInventory().get(selectedItem));
-                            
-                            break;
-                        }
-                    }    
+        SecMain.cls(); //clear screen
+        Survival.checkInventory(player.getInventory()); //check inventory
+
+        selectedItem = Survival.getInt0(player.getInventory().size())-1;
+        if (selectedItem == -1) {return true;}
+        if (selectedItem != -1) {
+
+        Survival.printItemB(player.getInventory().get(selectedItem));
+
+        //action
+        //
+        System.out.println("-----------------------------------");
+        if (player.getInventory().get(selectedItem) instanceof Consumable) {
+            System.out.println("-0 do nothing");
+            System.out.println("-1 consume");
+            switch (Survival.getInt0(1)) {
+                case 0:
+                    break;
+                case 1:
+
+                    Action.consume(player, (Consumable) player.getInventory().get(selectedItem));
+
+                    break;
                 }
-                return false;
+            }    
+        }
+        return false;
     }
     
     public static void tileInfo(MapTile[][] map, Player player) {
@@ -151,30 +151,9 @@ public class SecMain {
     }
     
     public static void cls() {
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
+        for (int i=0; i<24; i++) {
+            System.out.println();
+        }
     }
     
     public static void sleeping(Player player) {
