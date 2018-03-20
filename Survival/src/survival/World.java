@@ -17,11 +17,16 @@ import javax.swing.JPanel;
  * @author panbe
  */
 public class World extends JPanel implements Runnable {
+
+    long startTime;
+    long endTime;
+    long deltaT;
     
     String deltaTString;
     
     JLabel lblFrameRate = new JLabel();
     JLabel lblDebugIndicator = new JLabel();
+    GraphicalInventory GInventory = new GraphicalInventory(Survival.getPlayer());
     
     boolean debugSwitch = false;
 
@@ -42,6 +47,10 @@ public class World extends JPanel implements Runnable {
         lblDebugIndicator.setVisible(false);
         lblDebugIndicator.setSize(1000, 50);
         lblDebugIndicator.setFont(lblDebugIndicator.getFont().deriveFont(32.0f));
+        
+        
+        
+        
 
         this.setVisible(true);
         this.setSize(1400, 1400);
@@ -53,44 +62,33 @@ public class World extends JPanel implements Runnable {
 
     @Override
     public void run() {
-        final int desiredUPS = 60;
-        final double desiredSleepms = 1000D/desiredUPS;
-        
-        long startTime;
-        long endTime;
-        long sleepTime;
-        
+
         while (true) {
-            
-            startTime = System.nanoTime();
+            try {
+                startTime = System.nanoTime();
 
-            invalidate();
-            repaint();
+                
 
-            endTime = System.nanoTime();
-            
-            sleepTime = (long)(desiredSleepms*1000000) - (endTime-startTime);
-            long totalDelay = 0;
-            if (sleepTime < 0) {
-                totalDelay = (endTime-startTime);
-                System.out.println("Scene Thread Overload");
-            } else {
-                long sleepms = Math.floorDiv(sleepTime, 1000000);
-                int sleepns = (int)Math.floorMod(sleepTime, 1000000);
-                totalDelay = (long)(endTime-startTime+sleepTime);
-                try {
-                    Thread.sleep(sleepms, sleepns);
-                } catch (InterruptedException ex) {
-                    System.out.println("Thread Error");
+
+//
+                endTime = System.nanoTime();
+                deltaT = (endTime - startTime) / 1000000;
+                if ((int) deltaT < 60) {
+                    Thread.sleep(60 - (int) deltaT);
                 }
-            }
+                endTime = System.nanoTime();
+                deltaT = (endTime - startTime) / 1000000;
+                deltaTString = (Integer.toString((int) deltaT));
+                lblFrameRate.setText(deltaTString);
 
-            int realUPS = (int)(1000000000D/totalDelay);
-            deltaTString = (Integer.toString(realUPS));
-            lblFrameRate.setText(deltaTString);
-            
+                invalidate();
+                repaint();
+
+            } catch (InterruptedException ex) {
+                Logger.getLogger(World.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        
+
     }
 
     public void debugSwitcher() {
