@@ -26,6 +26,7 @@ public class World extends JPanel implements Runnable {
     
     JLabel lblFrameRate = new JLabel();
     JLabel lblDebugIndicator = new JLabel();
+    GraphicalInventory GInventory = new GraphicalInventory(Survival.getPlayer());
     
     boolean debugSwitch = false;
 
@@ -46,6 +47,10 @@ public class World extends JPanel implements Runnable {
         lblDebugIndicator.setVisible(false);
         lblDebugIndicator.setSize(1000, 50);
         lblDebugIndicator.setFont(lblDebugIndicator.getFont().deriveFont(32.0f));
+        
+        
+        
+        
 
         this.setVisible(true);
         this.setSize(1400, 1400);
@@ -62,7 +67,10 @@ public class World extends JPanel implements Runnable {
             try {
                 startTime = System.nanoTime();
 
-                //
+                
+
+
+//
                 endTime = System.nanoTime();
                 deltaT = (endTime - startTime) / 1000000;
                 if ((int) deltaT < 60) {

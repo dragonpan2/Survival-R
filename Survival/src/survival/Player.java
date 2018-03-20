@@ -20,6 +20,10 @@ public class Player extends Mob {
     private int MaxEnergy;
     private int posx;
     private int posy;
+    private int hungerDecayRate;
+    private int thristDecayRate;
+    private int energyDecayRate;
+    private int healthRegenRate;
 
 
     public Player(int id, String name, int health, int maxHealth, int hunger, int maxHunger, int thrist, int maxThrist, int energy, int MaxEnergy, ArrayList<Item> inventory) {

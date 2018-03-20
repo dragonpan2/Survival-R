@@ -12,6 +12,8 @@ public class Survival {
 
     public static Scanner SCAN = new Scanner(System.in);
     
+    public static Player player;
+    
     public static void main(String[] args) {
         
         
@@ -57,7 +59,7 @@ public class Survival {
 //        map[1][0].setTilePoint("COFFEE_SHOP");
         
        // Player player = new Player(0,"amba", 100, 100, 100, 100, 100, 100, 100, 100, inventory);
-        Player player = new Player(100,100,100,100,100,100,0,0,0,"amba",100,100,inventory);
+        player = new Player(100,100,100,100,100,100,0,0,0,"amba",100,100,inventory);
       
         Item[] gameItem = Init.gameInit();
         
@@ -68,8 +70,13 @@ public class Survival {
         
         //end of initialisation
         //-------------------------------------
+        try {
+            MainMenu MM = new MainMenu();
+        }
+        catch (Exception e) {
+            System.out.println("IO exception");
+        }
         
-        MainMenu MM = new MainMenu();
         //Window window = new Window();
         
         //start of game loop
@@ -280,6 +287,12 @@ public class Survival {
             default:
         }
         return false;
+    }
+    
+    
+    public static Player getPlayer() {
+        
+        return player;
     }
     
     
