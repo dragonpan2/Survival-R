@@ -5,6 +5,8 @@
  */
 package survival.Reboot;
 
+import survival.Player;
+
 /**
  *
  * @author panbe
